@@ -23,6 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import BreadcrumbLinks from "./breadcrumb-links";
+import { ThemeSwitcherButton } from "./theme-switcher-button";
 
 export function TopNav() {
   return (
@@ -97,6 +98,7 @@ export function TopNav() {
           className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
         />
       </div>
+      <ThemeSwitcherButton />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -105,12 +107,20 @@ export function TopNav() {
             className="overflow-hidden rounded-full"
           >
             <Image
+              src="/user-round.svg"
+              alt="Avatar"
+              width={36}
+              height={36}
+              className="transition-all group-hover:scale-110 overflow-hidden rounded-full text-slate-700"
+            ></Image>
+            {/* 
+            <Image 
               src="/placeholder-user.jpg"
               width={36}
               height={36}
               alt="Avatar"
               className="overflow-hidden rounded-full"
-            />
+            /> */}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
