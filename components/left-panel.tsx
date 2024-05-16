@@ -5,6 +5,7 @@ import {
   Home,
   LineChart,
   Package,
+  Package2,
   Settings,
   ShoppingCart,
   Users2,
@@ -32,18 +33,18 @@ export default function LeftPanel() {
       <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
         <Link
           href="/"
-          // className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
-          className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
+          className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
+          // className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
         >
-          {/* <Package2 className="h-4 w-4 transition-all group-hover:scale-110" /> */}
+          <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
 
-          <Image
+          {/* <Image
             src="/logoipsum-294.svg"
             alt="AppLogo"
             width={36}
             height={36}
             className="transition-all group-hover:scale-110"
-          ></Image>
+          ></Image> */}
           <span className="sr-only">Storehouse</span>
         </Link>
         <Tooltip>

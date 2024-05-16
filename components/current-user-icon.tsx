@@ -25,8 +25,8 @@ function CurrentUserIcon() {
           <Image
             src="/user-round.svg"
             alt="Avatar"
-            width={36}
-            height={36}
+            width={20}
+            height={20}
             className="transition-all group-hover:scale-110 overflow-hidden rounded-full text-slate-700"
           ></Image>
           {/* 

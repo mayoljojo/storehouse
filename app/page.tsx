@@ -6,7 +6,6 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <div>Dashboard</div>
       <div>User: {user?.name}</div>
     </div>
   );
