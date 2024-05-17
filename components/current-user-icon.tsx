@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { SignOutBtn } from "./sign-out-button";
 import { signOut } from "next-auth/react";
 
 function CurrentUserIcon() {
@@ -45,9 +44,10 @@ function CurrentUserIcon() {
         <DropdownMenuItem>Settings</DropdownMenuItem>
         <DropdownMenuItem>Support</DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => signOut()}>
+        <DropdownMenuItem
+          onClick={() => signOut({ callbackUrl: "/sign-in", redirect: true })}
+        >
           Logout
-          {/* <SignOutBtn /> */}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
