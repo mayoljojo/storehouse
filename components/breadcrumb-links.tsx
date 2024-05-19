@@ -21,7 +21,7 @@ function BreadcrumbLinks() {
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="#">Dashboard</Link>
+            <Link href="/">Home</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
 
