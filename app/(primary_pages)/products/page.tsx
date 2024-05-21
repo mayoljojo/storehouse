@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 function ProductsPage() {
   return (
@@ -17,7 +18,9 @@ function ProductsPage() {
               <p className="text-sm text-muted-foreground">
                 You can start selling as soon as you add a product.
               </p>
-              <Button className="mt-4">Add Product</Button>
+              <Link className="mt-4" href="/products/add-product">
+                Add Product
+              </Link>
             </div>
           </div>
         </main>

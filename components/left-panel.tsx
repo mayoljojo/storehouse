@@ -106,16 +106,16 @@ export default function LeftPanel() {
         <Tooltip>
           <TooltipTrigger asChild>
             <Link
-              href="operation"
+              href="operations"
               className={
-                pathname == "/operation" ? activeClassName : inactiveClassName
+                pathname == "/operations" ? activeClassName : inactiveClassName
               }
             >
               <FolderOpenDot className="h-5 w-5" />
-              <span className="sr-only">Operation</span>
+              <span className="sr-only">Operations</span>
             </Link>
           </TooltipTrigger>
-          <TooltipContent side="right">Operation</TooltipContent>
+          <TooltipContent side="right">Operations</TooltipContent>
         </Tooltip>
         <Tooltip>
           <TooltipTrigger asChild>
