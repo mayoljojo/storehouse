@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 
 function page() {
   return (
@@ -82,9 +83,11 @@ function page() {
             </div>
           </form>
           <div className="mt-8 flex justify-end gap-4">
-            <Button size="lg" variant="outline">
-              Cancel
-            </Button>
+            <Link href="/products">
+              <Button size="lg" variant="outline">
+                Cancel
+              </Button>
+            </Link>
             <Button
               className="bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
               size="lg"

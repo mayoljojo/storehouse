@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import TanStackQueryProvider from "@/components/providers/TanStackQueryProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,14 +19,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <TooltipProvider>
-        {/* <ThemeProvider
+        <TanStackQueryProvider>
+          {/* <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         > */}
-        <body className={inter.className}>{children}</body>
-        {/* </ThemeProvider> */}
+          <body className={inter.className}>{children}</body>
+          {/* </ThemeProvider> */}
+        </TanStackQueryProvider>
       </TooltipProvider>
     </html>
   );
