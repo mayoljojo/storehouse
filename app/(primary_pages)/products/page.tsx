@@ -3,9 +3,10 @@ import ProductList from "@/components/ProductList";
 function ProductsPage() {
   return (
     // <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[780px_1fr]">
-    <div className="grid w-full" style={{ minHeight: "calc(100vh - 10vh)" }}>
-      <div className="flex flex-col">
-        {/* <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+    <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
+      <div className="grid w-full" style={{ minHeight: "calc(100vh - 10vh)" }}>
+        <div className="flex flex-col">
+          {/* <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
           <div
             className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
             x-chunk="dashboard-02-chunk-1"
@@ -26,9 +27,10 @@ function ProductsPage() {
             </div>
           </div>
         </main> */}
-        <ProductList />
+          <ProductList />
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
 
