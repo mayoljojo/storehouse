@@ -40,6 +40,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { formatCurrency } from "@/lib/utils";
+import { Skeleton } from "./ui/skeleton";
 
 function ProductList() {
   const {
@@ -53,8 +54,6 @@ function ProductList() {
       return response.data;
     },
   });
-
-  // console.log(dataProducts);
 
   return (
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
@@ -135,51 +134,77 @@ function ProductList() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {dataProducts?.map((product) => (
-                    <TableRow key={product.id}>
-                      <TableCell className="hidden sm:table-cell">
-                        <Box
-                          className="aspect-square rounded-md object-cover"
-                          height="32"
-                          width="32"
-                        />
-                      </TableCell>
-                      <TableCell className="font-medium">
-                        {product.name}
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant="outline">Pending Status</Badge>
-                      </TableCell>
-                      <TableCell className="hidden md:table-cell">
-                        {formatCurrency(product.price, "₱")}
-                      </TableCell>
-                      <TableCell className="hidden md:table-cell">
-                        {product.stock}
-                      </TableCell>
-                      <TableCell className="hidden md:table-cell">
-                        Pending Last Restock
-                      </TableCell>
-                      <TableCell>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              aria-haspopup="true"
-                              size="icon"
-                              variant="ghost"
-                            >
-                              <MoreHorizontal className="h-4 w-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem>Edit</DropdownMenuItem>
-                            <DropdownMenuItem>Delete</DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                  {isLoadingProducts
+                    ? [...Array(5)].map((_, index) => (
+                        <TableRow key={index}>
+                          <TableCell className="hidden sm:table-cell">
+                            <Skeleton className="h-8 w-8" />
+                          </TableCell>
+                          <TableCell className="font-medium">
+                            <Skeleton className="h-4 w-[150px]" />
+                          </TableCell>
+                          <TableCell>
+                            <Skeleton className="h-4 w-[100px]" />
+                          </TableCell>
+                          <TableCell className="hidden md:table-cell">
+                            <Skeleton className="h-4 w-20" />
+                          </TableCell>
+                          <TableCell className="hidden md:table-cell">
+                            <Skeleton className="h-4 w-20" />
+                          </TableCell>
+                          <TableCell className="hidden md:table-cell">
+                            <Skeleton className="h-4 w-40" />
+                          </TableCell>
+                          <TableCell>
+                            <Skeleton className="h-4 w-10" />
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    : dataProducts?.map((product) => (
+                        <TableRow key={product.id}>
+                          <TableCell className="hidden sm:table-cell">
+                            <Box
+                              className="aspect-square rounded-md object-cover"
+                              height="32"
+                              width="32"
+                            />
+                          </TableCell>
+                          <TableCell className="font-medium">
+                            {product.name}
+                          </TableCell>
+                          <TableCell>
+                            <Badge variant="outline">Pending Status</Badge>
+                          </TableCell>
+                          <TableCell className="hidden md:table-cell">
+                            {formatCurrency(product.price, "₱ ")}
+                          </TableCell>
+                          <TableCell className="hidden md:table-cell">
+                            {product.stock}
+                          </TableCell>
+                          <TableCell className="hidden md:table-cell">
+                            Pending Last Restock
+                          </TableCell>
+                          <TableCell>
+                            <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <Button
+                                  aria-haspopup="true"
+                                  size="icon"
+                                  variant="ghost"
+                                >
+                                  <MoreHorizontal className="h-4 w-4" />
+                                  <span className="sr-only">Toggle menu</span>
+                                </Button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="end">
+                                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                                <DropdownMenuItem>Edit</DropdownMenuItem>
+                                <DropdownMenuItem>Delete</DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          </TableCell>
+                        </TableRow>
+                      ))}
                 </TableBody>
               </Table>
             </CardContent>
@@ -192,27 +217,6 @@ function ProductList() {
         </TabsContent>
       </Tabs>
     </main>
-    //   <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-    //   <div
-    //     className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
-    //     x-chunk="dashboard-02-chunk-1"
-    //   >
-    //     <div className="flex flex-col items-center gap-1 text-center">
-    //       <h3 className="text-2xl font-bold tracking-tight">
-    //         You have no products
-    //       </h3>
-    //       <p className="text-sm text-muted-foreground">
-    //         You can start selling as soon as you add a product.
-    //       </p>
-    //       <Link
-    //         className={cn(buttonVariants(), "mt-4")}
-    //         href="/products/add-product"
-    //       >
-    //         Add Product
-    //       </Link>
-    //     </div>
-    //   </div>
-    // </main>
   );
 }
 
