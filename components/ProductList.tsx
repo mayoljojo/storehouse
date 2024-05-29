@@ -39,6 +39,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { formatCurrency } from "@/lib/utils";
 
 function ProductList() {
   const {
@@ -150,7 +151,7 @@ function ProductList() {
                         <Badge variant="outline">Pending Status</Badge>
                       </TableCell>
                       <TableCell className="hidden md:table-cell">
-                        {product.price}
+                        {formatCurrency(product.price, "₱")}
                       </TableCell>
                       <TableCell className="hidden md:table-cell">
                         {product.stock}
