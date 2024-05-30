@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import TanStackQueryProvider from "@/components/providers/TanStackQueryProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +27,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         > */}
-          <body className={inter.className}>{children}</body>
+          <body className={inter.className}>
+            {children}
+            <Toaster />
+          </body>
           {/* </ThemeProvider> */}
         </TanStackQueryProvider>
       </TooltipProvider>

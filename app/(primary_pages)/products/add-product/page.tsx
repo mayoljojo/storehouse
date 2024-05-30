@@ -1,17 +1,4 @@
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  SelectValue,
-  SelectTrigger,
-  SelectItem,
-  SelectGroup,
-  SelectContent,
-  Select,
-} from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from "next/link";
+import { FormTest } from "@/components/form/FormTest";
 
 function page() {
   return (
@@ -20,7 +7,8 @@ function page() {
         className="flex justify-center items-center"
         style={{ minHeight: "calc(100vh - 10vh)" }}
       >
-        <Card className="shadow-sm rounded-md w-full max-w-2xl p-8">
+        <FormTest />
+        {/* <Card className="shadow-sm rounded-md w-full max-w-2xl p-8">
           <CardHeader className="text-3xl font-bold mb-6">
             <CardTitle>Add New Product</CardTitle>
           </CardHeader>
@@ -101,7 +89,7 @@ function page() {
               </Button>
             </div>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
     </main>
   );
