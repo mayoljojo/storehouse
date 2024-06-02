@@ -69,7 +69,11 @@ const FormProduct: React.FC<ProductFormProps> = ({
                   <FormItem>
                     <FormLabel>Product Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter product name..." {...field} />
+                      <Input
+                        id="name-input"
+                        placeholder="Enter product name..."
+                        {...field}
+                      />
                     </FormControl>
 
                     <FormMessage />
@@ -86,6 +90,7 @@ const FormProduct: React.FC<ProductFormProps> = ({
                     <FormControl>
                       <Input
                         placeholder="Enter product description..."
+                        id="description_input"
                         {...field}
                       />
                     </FormControl>
@@ -131,6 +136,7 @@ const FormProduct: React.FC<ProductFormProps> = ({
                     <FormLabel>Product Price</FormLabel>
                     <FormControl>
                       <Input
+                        id="price_input"
                         placeholder="Enter product price..."
                         {...field}
                         type="number"
@@ -150,6 +156,7 @@ const FormProduct: React.FC<ProductFormProps> = ({
                     <FormLabel>Product Tags</FormLabel>
                     <FormControl>
                       <Input
+                        id="tags-input"
                         placeholder="Enter product tags (comma separated)..."
                         {...field}
                       />
@@ -167,6 +174,7 @@ const FormProduct: React.FC<ProductFormProps> = ({
                     <FormLabel>Product Stock</FormLabel>
                     <FormControl>
                       <Input
+                        id="stock_input"
                         placeholder="Enter product stock..."
                         type="number"
                         {...field}

@@ -23,6 +23,8 @@ const Page: React.FC = () => {
         style={{ minHeight: "calc(100vh - 10vh)" }}
       >
         <FormProduct onSubmit={onSubmit} />
+
+        {/* This is for the edit page:: <FormProduct onSubmit={handleSubmit} defaultValues={blogData} isEdit /> */}
       </div>
     </main>
   );
