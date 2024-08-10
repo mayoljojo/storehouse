@@ -21,11 +21,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { FormSchema } from "@/zod-schema/schema";
+import { ProductFormSchema } from "@/zod-schema/schema";
 import Link from "next/link";
+import { addNewProduct } from "@/actions/actions";
 
 // Define TypeScript type from Zod schema
-type ProductFormData = z.infer<typeof FormSchema>;
+type ProductFormData = z.infer<typeof ProductFormSchema>;
 
 interface ProductFormProps {
   defaultValues?: ProductFormData;
@@ -39,7 +40,7 @@ const FormProduct: React.FC<ProductFormProps> = ({
   isEdit = false,
 }) => {
   const form = useForm<ProductFormData>({
-    resolver: zodResolver(FormSchema),
+    resolver: zodResolver(ProductFormSchema),
     defaultValues: {
       name: "",
       description: "",
@@ -57,7 +58,8 @@ const FormProduct: React.FC<ProductFormProps> = ({
       <CardContent>
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmit)}
+            action={addNewProduct}
+            // onSubmit={form.handleSubmit(onSubmit)}
             // className="w-2/3 space-y-6"
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
@@ -107,7 +109,15 @@ const FormProduct: React.FC<ProductFormProps> = ({
                   <FormItem>
                     <FormLabel>Product Category</FormLabel>
                     <Select
-                      onValueChange={field.onChange}
+                      onValueChange={(value) => {
+                        field.onChange(value);
+                        const categoryInput = document.getElementById(
+                          "category_hidden_input"
+                        ) as HTMLInputElement | null;
+                        if (categoryInput) {
+                          categoryInput.value = value;
+                        }
+                      }}
                       defaultValue={field.value}
                     >
                       <FormControl>
@@ -121,7 +131,12 @@ const FormProduct: React.FC<ProductFormProps> = ({
                         <SelectItem value="3">Suzuki</SelectItem>
                       </SelectContent>
                     </Select>
-
+                    <input
+                      type="hidden"
+                      id="category_hidden_input"
+                      name="category"
+                      defaultValue={field.value}
+                    />
                     <FormMessage />
                   </FormItem>
                 )}
