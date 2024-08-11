@@ -7,7 +7,7 @@ export const ProductFormSchema = z.object({
   description: z.string().min(2, {
     message: "Description must be at least 2 characters.",
   }),
-  category: z.string(),
+  category: z.coerce.number(),
   price: z.preprocess(
     (val) => Number(val),
     z

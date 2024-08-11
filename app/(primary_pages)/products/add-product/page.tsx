@@ -1,20 +1,8 @@
-"use client";
-import { toast } from "@/components/ui/use-toast";
-import { FormSchema } from "@/zod-schema/schema";
-import { z } from "zod";
 import FormProduct from "@/components/form/FormProduct";
+import { getCategories } from "@/actions/actions";
 
-const Page: React.FC = () => {
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
+const Page: React.FC = async () => {
+  const [categories] = await Promise.all([getCategories()]);
 
   return (
     <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
@@ -22,7 +10,7 @@ const Page: React.FC = () => {
         className="flex justify-center items-center"
         style={{ minHeight: "calc(100vh - 10vh)" }}
       >
-        <FormProduct onSubmit={onSubmit} />
+        <FormProduct categories={categories} />
 
         {/* This is for the edit page:: <FormProduct onSubmit={handleSubmit} defaultValues={blogData} isEdit /> */}
       </div>

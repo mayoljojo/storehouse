@@ -24,20 +24,58 @@ import { Input } from "@/components/ui/input";
 import { ProductFormSchema } from "@/zod-schema/schema";
 import Link from "next/link";
 import { addNewProduct } from "@/actions/actions";
+import { toast } from "@/components/ui/use-toast";
 
 // Define TypeScript type from Zod schema
 type ProductFormData = z.infer<typeof ProductFormSchema>;
 
 interface ProductFormProps {
   defaultValues?: ProductFormData;
-  onSubmit: (data: ProductFormData) => void;
+  // onSubmit: (data: ProductFormData) => void;
   isEdit?: boolean;
+  categories: {
+    name: string;
+    id: number;
+  }[];
 }
+
+const onSubmit = async (data: ProductFormData) => {
+  // Convert ProductFormData to FormData
+  const formData = new FormData();
+
+  // Append each field to the FormData object
+  formData.append("name", data.name);
+  formData.append("description", data.description);
+  formData.append("price", data.price.toString());
+  formData.append("stock", data.stock.toString());
+  formData.append("category", data.category.toString());
+
+  if (data.tags) {
+    formData.append("tags", data.tags);
+  }
+
+  // Now call the addNewProduct function with FormData
+  const savedProduct = await addNewProduct(formData);
+
+  if (!savedProduct) {
+    toast({
+      title: "Product is successfully added.",
+    });
+  } else if (savedProduct.error) {
+    toast({
+      variant: "destructive",
+      title:
+        "Uh oh! Something went wrong. There was a problem with your request",
+      description: savedProduct.error,
+    });
+  }
+};
 
 const FormProduct: React.FC<ProductFormProps> = ({
   defaultValues,
-  onSubmit,
+  // onSubmit,
   isEdit = false,
+  categories,
 }) => {
   const form = useForm<ProductFormData>({
     resolver: zodResolver(ProductFormSchema),
@@ -50,6 +88,8 @@ const FormProduct: React.FC<ProductFormProps> = ({
     },
   });
 
+  // console.log(categories);
+
   return (
     <Card className="shadow-sm rounded-md w-full max-w-3xl p-8">
       <CardHeader className="text-3xl font-bold mb-6">
@@ -58,8 +98,8 @@ const FormProduct: React.FC<ProductFormProps> = ({
       <CardContent>
         <Form {...form}>
           <form
-            action={addNewProduct}
-            // onSubmit={form.handleSubmit(onSubmit)}
+            // action={addNewProduct}
+            onSubmit={form.handleSubmit(onSubmit)}
             // className="w-2/3 space-y-6"
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
@@ -118,7 +158,7 @@ const FormProduct: React.FC<ProductFormProps> = ({
                           categoryInput.value = value;
                         }
                       }}
-                      defaultValue={field.value}
+                      // defaultValue={field.value}
                     >
                       <FormControl>
                         <SelectTrigger>
@@ -126,9 +166,14 @@ const FormProduct: React.FC<ProductFormProps> = ({
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="1">Yamaha</SelectItem>
-                        <SelectItem value="2">Honda</SelectItem>
-                        <SelectItem value="3">Suzuki</SelectItem>
+                        {categories.map((category) => (
+                          <SelectItem
+                            key={category.id}
+                            value={category.id.toString()}
+                          >
+                            {category.name}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                     <input

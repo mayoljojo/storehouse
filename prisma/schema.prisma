@@ -11,13 +11,15 @@ datasource db {
 }
 
 model Product {
-  id         Int       @id @default(autoincrement())
-  name       String
-  price      Float
-  stock      Int       // Field to track remaining products
-  categoryId Int       // Foreign key to Category
-  category   Category  @relation(fields: [categoryId], references: [id])
-  orders     OrderProduct[]
+  id                Int       @id @default(autoincrement())
+  name              String
+  description       String
+  price             Float
+  tags              String?  // Optional field
+  stock             Int       // Field to track remaining products
+  categoryId        Int       // Foreign key to Category
+  category          Category  @relation(fields: [categoryId], references: [id])
+  orders            OrderProduct[]
 }
 
 model Order {
