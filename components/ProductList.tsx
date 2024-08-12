@@ -210,7 +210,9 @@ function ProductList() {
                             >
                               Edit
                             </Button>
-                            <DeleteProductButton />
+                            <DeleteProductButton
+                              productId={product.id.toString()}
+                            />
                           </TableCell>
                         </TableRow>
                       ))}
