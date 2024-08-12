@@ -41,6 +41,7 @@ import {
 } from "@/components/ui/table";
 import { formatCurrency } from "@/lib/utils";
 import { Skeleton } from "./ui/skeleton";
+import DeleteProductButton from "./delete-product-button";
 
 function ProductList() {
   const {
@@ -185,7 +186,7 @@ function ProductList() {
                             Pending Last Restock
                           </TableCell>
                           <TableCell>
-                            <DropdownMenu>
+                            {/* <DropdownMenu>
                               <DropdownMenuTrigger asChild>
                                 <Button
                                   aria-haspopup="true"
@@ -201,7 +202,15 @@ function ProductList() {
                                 <DropdownMenuItem>Edit</DropdownMenuItem>
                                 <DropdownMenuItem>Delete</DropdownMenuItem>
                               </DropdownMenuContent>
-                            </DropdownMenu>
+                            </DropdownMenu> */}
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="mr-2"
+                            >
+                              Edit
+                            </Button>
+                            <DeleteProductButton />
                           </TableCell>
                         </TableRow>
                       ))}
