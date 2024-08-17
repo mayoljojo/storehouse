@@ -15,6 +15,8 @@ import {
 import { ArrowUpDown } from "lucide-react";
 import { ProductFormSchema } from "@/zod-schema/schema";
 import { z } from "zod";
+import DeleteProductButton from "@/components/delete-product-button";
+import { deleteProduct } from "@/actions/delete-product";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -88,7 +90,9 @@ export const columns: ColumnDef<Product>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem>Edit</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Delete</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => deleteProduct(product.id)}>
+              Delete
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
