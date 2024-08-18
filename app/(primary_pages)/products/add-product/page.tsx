@@ -1,5 +1,5 @@
+import { getCategories } from "@/actions/get-categories";
 import FormProduct from "@/components/form/FormProduct";
-import { getCategories } from "@/actions/actions";
 
 const Page: React.FC = async () => {
   const [categories] = await Promise.all([getCategories()]);

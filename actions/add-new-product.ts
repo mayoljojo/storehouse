@@ -52,14 +52,3 @@ export async function addNewProduct(formData: FormData) {
   // }
   redirect("/products");
 }
-
-export async function getCategories() {
-  const categories = await db.category.findMany({
-    select: {
-      id: true,
-      name: true,
-    },
-  });
-
-  return categories;
-}

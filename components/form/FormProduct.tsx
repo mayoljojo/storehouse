@@ -23,7 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { ProductFormSchema } from "@/zod-schema/schema";
 import Link from "next/link";
-import { addNewProduct } from "@/actions/actions";
+import { addNewProduct } from "@/actions/add-new-product";
 import { toast } from "@/components/ui/use-toast";
 
 // Define TypeScript type from Zod schema
