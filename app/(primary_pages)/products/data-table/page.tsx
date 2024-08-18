@@ -3,7 +3,9 @@ import { DataTable } from "./data-table";
 
 async function getData(): Promise<Product[]> {
   // Fetch data from your API here.
-  const res = await fetch("http://localhost:3000/api/products");
+  const res = await fetch("http://localhost:3000/api/products", {
+    cache: "no-cache",
+  });
   const data = res.json();
   return data;
 
@@ -29,7 +31,7 @@ async function getData(): Promise<Product[]> {
   //   ];
 }
 
-export default async function DemoPage() {
+export default async function DataTablePage() {
   const data = await getData();
 
   return (

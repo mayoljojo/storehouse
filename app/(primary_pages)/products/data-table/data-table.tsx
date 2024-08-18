@@ -31,9 +31,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { DataTablePagination } from "@/components/data-table-pagination";
-import { useQuery } from "@tanstack/react-query";
-import { Product } from "@prisma/client";
-import { ChevronDown } from "lucide-react";
+
+import { ChevronDown, Search } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
