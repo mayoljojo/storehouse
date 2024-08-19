@@ -24,7 +24,7 @@ export async function addNewProduct(formData: FormData) {
   if (!parsedData.success) {
     // Handle validation errors
     console.error("Validation failed:", parsedData.error);
-    return { error: "Error - Validation failed during parse." };
+    return { error: "Error - Validation failed during parsing data." };
   }
 
   // If the data is valid, you can safely use it
@@ -46,9 +46,5 @@ export async function addNewProduct(formData: FormData) {
 
   console.log("Product saved successfully:", savedProduct);
 
-  //   return savedProduct;
-  // } catch (error) {
-  //   console.error("Error saving product:", error);
-  // }
   redirect("/products");
 }

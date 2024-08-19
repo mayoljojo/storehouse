@@ -1,4 +1,3 @@
-import ProductList from "@/components/ProductList";
 import { DataTable } from "./data-table";
 import { columns, Product } from "./columns";
 
@@ -19,7 +18,6 @@ async function ProductsPage() {
       <div className="grid w-full" style={{ minHeight: "calc(100vh - 10vh)" }}>
         <div className="flex flex-col">
           <DataTable columns={columns} data={data} />
-          {/* <ProductList /> */}
         </div>
       </div>
     </main>
