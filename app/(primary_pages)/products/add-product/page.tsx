@@ -1,5 +1,9 @@
 import { getCategories } from "@/actions/get-categories";
-import FormProduct from "@/components/form/FormProduct";
+import { ProductFormSchema } from "@/zod-schema/schema";
+import { z } from "zod";
+import AddProductForm from "@/components/form/AddProductForm";
+
+type ProductFormData = z.infer<typeof ProductFormSchema>;
 
 const Page: React.FC = async () => {
   const [categories] = await Promise.all([getCategories()]);
@@ -10,7 +14,7 @@ const Page: React.FC = async () => {
         className="flex justify-center items-center"
         style={{ minHeight: "calc(100vh - 10vh)" }}
       >
-        <FormProduct categories={categories} />
+        <AddProductForm categories={categories} />
 
         {/* This is for the edit page:: <FormProduct onSubmit={handleSubmit} defaultValues={blogData} isEdit /> */}
       </div>

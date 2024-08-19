@@ -40,10 +40,8 @@ interface ProductFormProps {
 }
 
 const onSubmit = async (data: ProductFormData) => {
-  // Convert ProductFormData to FormData
   const formData = new FormData();
 
-  // Append each field to the FormData object
   formData.append("name", data.name);
   formData.append("description", data.description);
   formData.append("price", data.price.toString());
@@ -54,7 +52,6 @@ const onSubmit = async (data: ProductFormData) => {
     formData.append("tags", data.tags);
   }
 
-  // Now call the addNewProduct function with FormData
   const savedProduct = await addNewProduct(formData);
 
   if (!savedProduct) {
@@ -71,7 +68,7 @@ const onSubmit = async (data: ProductFormData) => {
   }
 };
 
-const FormProduct: React.FC<ProductFormProps> = ({
+const AddProductForm: React.FC<ProductFormProps> = ({
   defaultValues,
   // onSubmit,
   isEdit = false,
@@ -87,8 +84,6 @@ const FormProduct: React.FC<ProductFormProps> = ({
       stock: 0,
     },
   });
-
-  // console.log(categories);
 
   return (
     <Card className="shadow-sm rounded-md w-full max-w-3xl p-8">
@@ -263,4 +258,4 @@ const FormProduct: React.FC<ProductFormProps> = ({
   );
 };
 
-export default FormProduct;
+export default AddProductForm;

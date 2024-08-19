@@ -17,6 +17,8 @@ import { ProductFormSchema } from "@/zod-schema/schema";
 import { z } from "zod";
 import DeleteProductButton from "@/components/delete-product-button";
 import { deleteProduct } from "@/actions/delete-product";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -88,7 +90,12 @@ export const columns: ColumnDef<Product>[] = [
               Copy product ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <Link href={`/products/edit-product/${product.id.toString()}`}>
+              <DropdownMenuItem>
+                {/* {`/products/edit-product/${product.id.toString()}`} */}
+                Edit
+              </DropdownMenuItem>
+            </Link>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => deleteProduct(product.id)}>
               Delete
